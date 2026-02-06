@@ -3,254 +3,303 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مبادرة الإتقان والمخاطبة - الأستاذ محمد طه عطا المنان</title>
-    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@700&family=Cairo:wght@400;600;900&display=swap" rel="stylesheet">
+    <title>الماجستير المصغر | رحلتك نحو القمة</title>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,700;1,400&family=Cairo:wght@300;400;700;900&display=swap" rel="stylesheet">
     <style>
-        :root { --navy: #0f172a; --gold: #d4af37; --bok-blue: #005aab; --success: #22c55e; --red: #ef4444; --light-bg: #f8fafc; }
-        
+        :root {
+            --gold: #d4af37;
+            --gold-light: #f1d27b;
+            --deep-black: #050505;
+            --card-bg: #0f0f0f;
+            --text-silver: #a0a0a0;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Cairo', sans-serif; }
+
         body { 
-            font-family: 'Cairo', sans-serif; 
-            background: var(--navy); 
-            margin: 0; 
-            padding: 20px 10px; 
-            display: flex; 
-            justify-content: center; 
-            align-items: flex-start; 
-            min-height: 100vh;
-            overflow-y: auto; 
-            color: var(--navy);
+            background-color: var(--deep-black); 
+            color: #ffffff; 
+            overflow-x: hidden;
+            scroll-behavior: smooth;
         }
 
-        .wrapper { 
-            max-width: 480px; 
-            width: 100%; 
-            background: white; 
-            border-radius: 50px; 
-            overflow: hidden; 
-            box-shadow: 0 50px 100px rgba(0,0,0,0.6); 
-            margin-bottom: 40px;
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-
-        /* الهيدر والعداد */
-        .hero { 
-            background: linear-gradient(180deg, var(--navy) 0%, #1e3a8a 100%); 
-            padding: 40px 20px; 
-            text-align: center; 
-            color: white; 
+        /* Hero Magic Section */
+        header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: radial-gradient(circle at center, #1a1a1a 0%, #050505 100%);
+            padding: 20px;
             position: relative;
         }
-        .hero h1 { font-family: 'Amiri', serif; font-size: 2.3rem; margin: 0; color: var(--gold); text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
-        .hero .subtitle { font-size: 1.15rem; margin-top: 10px; display: block; font-weight: 600; opacity: 0.9; }
-        
-        .counter-box { 
-            background: rgba(255,255,255,0.08); 
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: 10%;
+            width: 300px;
+            height: 300px;
+            background: var(--gold);
+            filter: blur(150px);
+            opacity: 0.15;
+            z-index: 0;
+        }
+
+        .admin-crown {
+            font-size: 0.85rem;
+            letter-spacing: 4px;
+            color: var(--gold);
+            margin-bottom: 20px;
+            font-weight: 300;
+            text-transform: uppercase;
+            z-index: 1;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            font-family: 'Cairo', serif;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 25px;
+            background: linear-gradient(to bottom, #fff 30%, var(--gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            z-index: 1;
+        }
+
+        .hero-sub {
+            font-size: 1.3rem;
+            color: var(--text-silver);
+            max-width: 800px;
+            margin-bottom: 40px;
+            font-weight: 300;
+            z-index: 1;
+        }
+
+        /* Magical Counter */
+        .magic-stat {
+            position: relative;
+            z-index: 1;
+            padding: 20px 50px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 100px;
+            background: rgba(255, 255, 255, 0.02);
             backdrop-filter: blur(10px);
-            padding: 25px 15px; 
-            border-radius: 30px; 
-            margin-top: 25px; 
-            border: 1px solid rgba(255,255,255,0.15);
         }
-        #studentCounter { font-size: 3.8rem; font-weight: 900; display: block; color: var(--gold); line-height: 1; margin: 10px 0; letter-spacing: -2px; }
-        .live-indicator { 
-            display: inline-flex; 
-            align-items: center; 
-            background: var(--red); 
-            padding: 4px 12px; 
-            border-radius: 20px; 
-            font-size: 0.75rem; 
-            font-weight: 900; 
-            margin-bottom: 10px;
-            animation: blink 1.5s infinite;
+
+        #count {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: var(--gold);
+            display: block;
         }
-        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
 
-        /* المحتوى الرئيسي */
-        .content { padding: 35px 25px; text-align: right; }
-        .section-title { font-size: 1.4rem; font-weight: 900; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
-        .section-title::after { content: ""; flex: 1; height: 2px; background: #e2e8f0; }
+        /* Content Grid */
+        .main-content { max-width: 1100px; margin: 0 auto; padding: 100px 20px; }
 
-        .feature-card { 
-            background: var(--light-bg); 
-            padding: 15px; 
-            border-radius: 20px; 
-            margin-bottom: 15px; 
-            display: flex; 
-            align-items: center; 
-            gap: 12px;
+        .pricing-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 120px;
+        }
+
+        .luxury-card {
+            background: var(--card-bg);
+            padding: 50px;
+            border-radius: 30px;
+            border: 1px solid #1a1a1a;
+            text-align: center;
+            transition: 0.5s cubic-bezier(0.2, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .luxury-card:hover {
+            transform: translateY(-15px);
+            border-color: var(--gold);
+            box-shadow: 0 30px 60px rgba(212, 175, 55, 0.1);
+        }
+
+        .luxury-card h3 { color: var(--gold); font-size: 1rem; margin-bottom: 20px; }
+        .luxury-card .price { font-size: 3rem; font-weight: 700; margin-bottom: 10px; }
+        .luxury-card .desc { color: var(--text-silver); font-size: 0.9rem; }
+
+        /* Testimonials Scroll */
+        .scroll-section { margin-bottom: 120px; text-align: center; }
+        .scroll-section h2 { margin-bottom: 50px; font-weight: 300; color: var(--gold); }
+
+        .t-wrap {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .t-box {
+            background: #0a0a0a;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: right;
+            border-right: 2px solid var(--gold);
+        }
+
+        .t-box p { font-style: italic; color: #ddd; line-height: 1.8; }
+        .t-box .author { margin-top: 20px; display: block; font-weight: bold; color: var(--gold); }
+
+        /* Decision Form (The Closer) */
+        .decision-area {
+            background: linear-gradient(145deg, #111, #050505);
+            padding: 80px 40px;
+            border-radius: 50px;
+            border: 1px solid #222;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .decision-area h2 { text-align: center; margin-bottom: 40px; font-size: 2.2rem; }
+
+        .input-group { margin-bottom: 30px; }
+        input {
+            width: 100%;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid #333;
+            padding: 15px 0;
+            color: #fff;
+            font-size: 1.1rem;
             transition: 0.3s;
         }
-        .feature-card span { font-size: 1.5rem; }
 
-        /* صندوق السعر */
-        .price-tag { 
-            background: #fff1f2; 
-            border: 2px dashed var(--red); 
-            border-radius: 30px; 
-            padding: 25px; 
-            text-align: center; 
-            margin: 30px 0;
-        }
-        .price-tag .old { text-decoration: line-through; color: #94a3b8; font-size: 1.1rem; }
-        .price-tag .new { color: var(--red); font-size: 2.8rem; font-weight: 900; display: block; }
-        
-        /* الحساب البنكي */
-        .bank-info { 
-            background: linear-gradient(135deg, #005aab 0%, #003a70 100%); 
-            padding: 30px; 
-            border-radius: 35px; 
-            color: white; 
-            text-align: center; 
-            margin: 25px 0;
+        input:focus { outline: none; border-bottom-color: var(--gold); }
+
+        .btn-gold {
+            width: 100%;
+            background: var(--gold);
+            color: #000;
+            padding: 25px;
+            border: none;
+            border-radius: 15px;
+            font-size: 1.3rem;
+            font-weight: 900;
             cursor: pointer;
-            box-shadow: 0 15px 30px rgba(0, 90, 171, 0.3);
+            transition: 0.4s;
+            margin-top: 20px;
         }
-        .acc-number { font-size: 2.8rem; font-weight: 900; letter-spacing: 2px; display: block; margin: 10px 0; }
 
-        /* خانة الاسم والزر */
-        .input-area { margin: 30px 0; }
-        .input-area label { font-weight: 700; margin-bottom: 10px; display: block; color: var(--navy); }
-        input[type="text"] { 
-            width: 100%; 
-            padding: 20px; 
-            border-radius: 20px; 
-            border: 2px solid #e2e8f0; 
-            font-size: 1.1rem; 
-            font-family: 'Cairo'; 
-            box-sizing: border-box;
-            outline: none;
-            transition: 0.3s;
+        .btn-gold:hover {
+            background: var(--gold-light);
+            letter-spacing: 2px;
+            box-shadow: 0 0 30px var(--gold);
         }
-        input[type="text"]:focus { border-color: var(--gold); }
 
-        .main-btn { 
-            background: var(--success); 
-            color: white; 
-            width: 100%; 
-            padding: 22px; 
-            border-radius: 25px; 
-            font-size: 1.5rem; 
-            font-weight: 900; 
-            border: none; 
-            font-family: 'Cairo'; 
-            cursor: pointer; 
-            box-shadow: 0 15px 35px rgba(34, 197, 94, 0.4);
-            transition: 0.3s;
+        footer { text-align: center; padding: 60px; color: #444; font-size: 0.8rem; }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.8rem; }
+            .decision-area { padding: 40px 20px; border-radius: 30px; }
         }
-        .main-btn:active { transform: scale(0.96); }
-
-        .footer-text { text-align: center; font-size: 0.8rem; color: #94a3b8; margin-top: 30px; font-weight: 600; }
     </style>
 </head>
 <body>
 
-<div class="wrapper">
-    <div class="hero">
-        <div class="live-indicator">مباشر الآن LIVE</div>
-        <h1>مبادرة الإتقان والمخاطبة</h1>
-        <span class="subtitle">لإتقان التحدث باللغة الإنجليزية 🗣️🇺🇸</span>
-        <p style="opacity: 0.8;">مع الأستاذ محمد طه عطا المنان</p>
-        
-        <div class="counter-box">
-            <span style="font-size: 0.9rem; font-weight: bold;">عدد الذين انضموا للرحلة:</span>
-            <span id="studentCounter">100,000</span>
-            <div id="status" style="font-size: 0.85rem; font-weight: bold; color: var(--gold);">تحديث السجلات مستمر...</div>
+<header>
+    <div class="admin-crown">منصة البرامج التخصصية | بإشراف محمد طه عطا المنان</div>
+    <h1>أتقن لغة العالم..<br>بمنهجية القادة.</h1>
+    <p class="hero-sub">انضم إلى البرنامج الأرقى للترجمة واللغة الإنجليزية في السودان، حيث تجتمع الرصانة الأكاديمية بالاحترافية الرقمية.</p>
+    
+    <div class="magic-stat">
+        <span id="count">0</span>
+        <p style="font-size: 0.8rem; letter-spacing: 2px; color: var(--gold);">شخص اختاروا النجاح</p>
+    </div>
+</header>
+
+<div class="main-content">
+    <div class="pricing-section">
+        <div class="luxury-card">
+            <h3>الاستثمار الكامل</h3>
+            <div class="price">600,000</div>
+            <div class="desc">جنيه سوداني مقابل دبلوم مهني متكامل</div>
+        </div>
+        <div class="luxury-card">
+            <h3>نظام التمكين (أقساط)</h3>
+            <div class="price">100,000</div>
+            <div class="desc">جنيه سوداني شهرياً لتسهيل انطلاقتك</div>
         </div>
     </div>
 
-    <div class="content">
-        <div class="section-title">لماذا تنضم إلينا؟</div>
-        <div class="feature-card"><span>🚀</span> <b>مخاطبة فورية:</b> تدريب يجعلك تتحدث من الأسبوع الأول.</div>
-        <div class="feature-card"><span>📚</span> <b>منهج شهرين:</b> تغطية شاملة لكافة احتياجاتك اللغوية.</div>
-        <div class="feature-card"><span>📜</span> <b>شهادة رسمية:</b> تعزز ملفك المهني بشكل كبير.</div>
-
-        <div class="price-tag">
-            <span style="font-weight: 900; color: var(--navy);">سعر المبادرة (لفترة محدودة)</span>
-            <span class="old">السعر السابق: 500,000 ج.س</span>
-            <span class="new">30,000 ج.س</span>
-            <small style="font-weight: bold; color: var(--red);">شهادة معتمدة</small>
-        </div>
-
-        <div class="section-title">بيانات التحويل (بنكك)</div>
-        <div class="bank-info" onclick="copyAcc()">
-            <span style="font-size: 0.9rem; font-weight: bold;">اضغط على الرقم لنسخه ⬇️</span>
-            <span class="acc-number">2473368</span>
-            <div style="border-top: 1px solid rgba(255,255,255,0.2); padding-top: 10px; font-weight: 900;">
-                باسم: محمد طه عطا المنان
+    <div class="scroll-section">
+        <h2>لماذا يثق بنا المتميزون؟</h2>
+        <div class="t-wrap">
+            <div class="t-box">
+                <p>"المنصة لا تقدم دروساً، بل تصنع هوية مهنية جديدة للمترجم. فخور بكوني أحد الخريجين."</p>
+                <span class="author">أحمد المرتضى - باحث أكاديمي</span>
+            </div>
+            <div class="t-box">
+                <p>"بفضل التقنيات التي تعلمتها، استطعت العمل مع وكالات ترجمة دولية وأنا في منزلي."</p>
+                <span class="author">سارة المنصور - مترجمة حرة</span>
             </div>
         </div>
-
-        <div class="input-area">
-            <label>أدخل اسمك الثلاثي لحجز مقعدك:</label>
-            <input type="text" id="nameInput" placeholder="اكتب اسمك هنا...">
-        </div>
-
-        <button onclick="sendToWhatsapp()" class="main-btn">أرسل إيصال الدفع وسجل اسمك 🚀</button>
-        
-        <p style="text-align: center; color: var(--gold); font-weight: bold; margin-top: 20px; font-size: 0.95rem;">
-            ⚡ انضم الآن، المقاعد المتبقية محدودة جداً!
-        </p>
-
-        <div class="footer-text">
-            حقوق التصميم محفوظة © 2026<br>
-            الأستاذ محمد طه عطا المنان
-        </div>
     </div>
+
+    <section id="register" class="decision-area">
+        <h2>ابدأ رحلة التحول</h2>
+        <div class="input-group">
+            <input type="text" id="full_name" placeholder="الاسم الرباعي كما تريده في الشهادة">
+        </div>
+        <div class="input-group">
+            <input type="number" id="initial_payment" placeholder="المبلغ المراد دفعه (بالجنيه السوداني)">
+        </div>
+        <button class="btn-gold" onclick="launchWhatsApp()">
+            تأكيد التسجيل والمباشرة فوراً
+        </button>
+        <p style="text-align: center; margin-top: 25px; font-size: 0.8rem; color: #666;">
+            * بمجرد الضغط، ستفتح لك بوابة التواصل المباشر مع إدارة محمد طه عطا المنان.
+        </p>
+    </section>
 </div>
 
+<footer>
+    &copy; 2026 منصة البرامج التخصصية - التفوق ليس خياراً، بل قرار.
+</footer>
+
 <script>
-    // وظيفة النسخ
-    function copyAcc() {
-        navigator.clipboard.writeText("2473368");
-        alert("✅ تم نسخ رقم الحساب بنجاح!");
+    // عداد سحري
+    function animateCounter() {
+        const target = 8342;
+        const duration = 2500;
+        let start = null;
+        const element = document.getElementById('count');
+
+        function step(timestamp) {
+            if (!start) start = timestamp;
+            const progress = timestamp - start;
+            const current = Math.min(Math.floor((progress / duration) * target), target);
+            element.innerText = current.toLocaleString() + "+";
+            if (progress < duration) {
+                window.requestAnimationFrame(step);
+            }
+        }
+        window.requestAnimationFrame(step);
     }
 
-    // وظيفة الواتساب
-    function sendToWhatsapp() {
-        const name = document.getElementById('nameInput').value;
-        if (!name) {
-            alert("من فضلك اكتب اسمك أولاً لتأكيد الحجز.");
+    window.onload = animateCounter;
+
+    function launchWhatsApp() {
+        const name = document.getElementById('full_name').value;
+        const amt = document.getElementById('initial_payment').value;
+        const phone = "249901946410";
+
+        if(!name || !amt) {
+            alert("نعتذر، يرجى إدخال بياناتك بالكامل للانتقال للخطوة التالية.");
             return;
         }
-        window.location.href = "https://chat.whatsapp.com/Je07Ehw7t8uESPBrW1otWz";
+
+        const msg = `إلى إدارة منصة البرامج التخصصية،%0A%0Aأنا مستعد للانضمام لماجستير الترجمة:%0A- الاسم: ${name}%0A- الاستثمار الأولي: ${amt} جنيه سوداني%0A%0Aأرجو إرسال تفاصيل البدء.`;
+        window.open(`https://wa.me/${phone}?text=${msg}`, '_blank');
     }
-
-    // العداد التفاعلي
-    let count = 100000;
-    const counterEl = document.getElementById('studentCounter');
-    const statusEl = document.getElementById('status');
-
-    function animate() {
-        if (count < 300000) {
-            count += 4850;
-            counterEl.innerText = count.toLocaleString();
-            setTimeout(animate, 30);
-        } else {
-            statusEl.innerText = "أهلاً بك! طالب جديد حجز مقعده الآن ✅";
-            statusEl.style.color = "#22c55e";
-            updateLive();
-        }
-    }
-
-    const updates = [
-        "طالب جديد انضم الآن من الخرطوم ✅",
-        "تم حجز مقعد جديد في المبادرة ✅",
-        "طالب جديد انضم من بورتسودان ✅",
-        "أهلاً بالمنضمين الجدد معنا ✅"
-    ];
-    let updateIdx = 0;
-
-    function updateLive() {
-        count++;
-        counterEl.innerText = count.toLocaleString();
-        if (count % 2 === 0) {
-            statusEl.innerText = updates[updateIdx];
-            updateIdx = (updateIdx + 1) % updates.length;
-        }
-        setTimeout(updateLive, 4000);
-    }
-
-    window.onload = animate;
 </script>
 
 </body>
